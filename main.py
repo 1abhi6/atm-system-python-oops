@@ -4,19 +4,8 @@ class Atm:
         self.__pin = 0
         self.__currentBalance = 0
 
-    # Get function to get the pin
-    def get_pin(self):
-        return self.__pin
-
-    # Set function to set the pin
-    def set_pin(self, newPin):
-        if type(newPin) == int:
-            self.__pin = self.newPin
-            print("Pin Changed Successfully!!!")
-        else:
-            print("Please check your pin again, It should be a number")
-
     # Create Pin
+
     def createPin(self):
         self.__pin = input("Enter your Pin: ")
         print("Pin created successfully")
@@ -61,8 +50,21 @@ class Atm:
             print("Current Balance:", self.__currentBalance)
         else:
             print("Invalid Input")
-# End of the class Atm
 
+    # Check Pin getter function to get the pin
+    def getPin(self):
+        return self.__pin
+
+    # Change pin setter function to set the pin
+    def setPin(self, newPin):
+        if type(newPin) == int:
+            self.__pin = self.newPin
+            print("Pin Changed Successfully!!!")
+        else:
+            print("Please check your pin again, It should be a number")
+
+
+# *****-----End of the class Atm-----*****
 
 # Creating the object
 sbi = Atm()
@@ -71,21 +73,40 @@ sbi = Atm()
 while True:
     userInput = int(input("""
         Hello, How would you like to proceed?
-        1. Create pin
+        1. Create Pin
         2. Deposit
         3. Withdraw
         4. Check Balance
-        5. Exit
+        5. Check Pin
+        6. Change Pin
+        7. Exit
     """))
+
     if userInput == 1:
         sbi.createPin()
+
     elif userInput == 2:
         sbi.depositMoney()
+
     elif userInput == 3:
         sbi.withdrawMoney()
+
     elif userInput == 4:
         sbi.checkBalance()
+
     elif userInput == 5:
+        if(sbi.getPin() ==)
+        print("Current Pin:", sbi.getPin())
+
+    elif userInput == 6:
+        check = sbi.checkPin()
+        if check:
+            newPin = input("Input new Pin: ")
+            sbi.setPin(newPin)
+        else:
+            print("Invalid Pin")
+
+    elif userInput == 7:
         break
     else:
         print("Invalid Input")
