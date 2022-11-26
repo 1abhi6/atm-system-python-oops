@@ -57,8 +57,8 @@ class Atm:
 
     # Change pin setter function to set the pin
     def setPin(self, newPin):
-        if type(newPin) == int:
-            self.__pin = self.newPin
+        if newPin.isdigit():
+            self.__pin = newPin
             print("Pin Changed Successfully!!!")
         else:
             print("Please check your pin again, It should be a number")
@@ -95,8 +95,11 @@ while True:
         sbi.checkBalance()
 
     elif userInput == 5:
-        if(sbi.getPin() ==)
-        print("Current Pin:", sbi.getPin())
+        if (sbi.getPin() == 0):
+            print("Please Create a Pin")
+            sbi.createPin()
+        else:
+            print("Current Pin:", sbi.getPin())
 
     elif userInput == 6:
         check = sbi.checkPin()
