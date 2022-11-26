@@ -1,18 +1,30 @@
 class Atm:
     # Constructor
     def __init__(self):
-        self.pin = ""
-        self.currentBalance = 0
+        self.__pin = 0
+        self.__currentBalance = 0
+
+    # Get function to get the pin
+    def get_pin(self):
+        return self.__pin
+
+    # Set function to set the pin
+    def set_pin(self, newPin):
+        if type(newPin) == int:
+            self.__pin = self.newPin
+            print("Pin Changed Successfully!!!")
+        else:
+            print("Please check your pin again, It should be a number")
 
     # Create Pin
     def createPin(self):
-        self.pin = input("Enter your Pin: ")
+        self.__pin = input("Enter your Pin: ")
         print("Pin created successfully")
 
     # Check Pin
     def checkPin(self):
         temp = input("Input your Pin: ")
-        if temp == self.pin:
+        if temp == self.__pin:
             return True
         else:
             return False
@@ -22,9 +34,9 @@ class Atm:
         check = self.checkPin()
         if check:
             self.balance = int(input("Enter the money you want to deposit: "))
-            self.currentBalance += self.balance
+            self.__currentBalance += self.balance
             print("Deposited successfully")
-            print("Current Balance:", self.currentBalance)
+            print("Current Balance:", self.__currentBalance)
         else:
             print("Inalid Pin")
 
@@ -33,10 +45,10 @@ class Atm:
         check = self.checkPin()
         if check:
             withdrawAmount = int(input("Input the amount to withdraw: "))
-            if withdrawAmount < self.currentBalance:
-                self.currentBalance -= withdrawAmount
+            if withdrawAmount < self.__currentBalance:
+                self.__currentBalance -= withdrawAmount
                 print("Withdrawl Succesfully")
-                print("Current Balance:", self.currentBalance)
+                print("Current Balance:", self.__currentBalance)
             else:
                 print("Insufficent Funds!!!")
         else:
@@ -46,7 +58,7 @@ class Atm:
     def checkBalance(self):
         check = self.checkPin()
         if check:
-            print("Current Balance:", self.currentBalance)
+            print("Current Balance:", self.__currentBalance)
         else:
             print("Invalid Input")
 # End of the class Atm
