@@ -1,11 +1,32 @@
 class Atm:
+
+    # Static variable
+    __counter = 0
+
     # Constructor
     def __init__(self):
+        # Instance variable
         self.__pin = 0
         self.__currentBalance = 0
+        self.sno = Atm.__counter
+        Atm.__counter += 1
+
+    # When we deal with static variable inside a method, we don't pass self cos self is a variable that points to an object, means its an object. So the method is known as static method and denoted as @staticmethod
+
+    # Get counter
+    @staticmethod
+    def getCounter():
+        return Atm.__counter
+
+    # Set counter
+    @staticmethod
+    def setCounter(new):
+        if type(new) == int:
+            Atm.__counter = new
+        else:
+            print("Invalid!!!")
 
     # Create Pin
-
     def createPin(self):
         self.__pin = input("Enter your Pin: ")
         print("Pin created successfully")
@@ -68,7 +89,13 @@ class Atm:
 
 # Creating the object
 sbi = Atm()
-
+hdfc = Atm()
+# We call static variable or methods as className = static_vaiable/method()
+counterValue = Atm.getCounter()
+print(counterValue)
+Atm.setCounter(900)
+counterValue = Atm.getCounter()
+print(counterValue)
 # Creating the menu
 while True:
     userInput = int(input("""
